@@ -26,18 +26,18 @@ function _update60()
 end
 
 function updatemenu()
+	menuoptions = {"play","continue"}
 	if btnp(0) then
-		
+		choice = menuoptions[1]
 	end	
 	if btnp(1) then
-	
+		choice = menuoptions[2]
 	end
 end
 -->8
 -- draw game
 
 function _draw()
-	cls()
 	if menu then
 		drawmenu()
 	elseif game then
@@ -45,6 +45,11 @@ function _draw()
 	elseif gameover then
 		updategameover()
 	end
+end
+
+function drawmenu()
+	cls()
+	print(choice)
 end
 __gfx__
 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
