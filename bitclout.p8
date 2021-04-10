@@ -26,12 +26,12 @@ function _update60()
 end
 
 function updatemenu()
-	menuoptions = {"play","continue"}
+	menuoptions = {"choose","play","continue"}
 	if btnp(0) then
-		choice = menuoptions[1]
+		menuchoice = 2
 	end	
 	if btnp(1) then
-		choice = menuoptions[2]
+		menuchoice = 3
 	end
 end
 -->8
@@ -49,7 +49,7 @@ end
 
 function drawmenu()
 	cls()
-	print(choice)
+	print("⬅️ "..menuoptions[menuchoice].."➡️")
 end
 __gfx__
 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
