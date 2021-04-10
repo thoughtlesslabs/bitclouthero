@@ -33,7 +33,17 @@ function updatemenu()
 	elseif btnp(1) then
 		menuchoice = 3
 	end
-	return menuchoice
+	menuselect = menuchoice
+	if btnp(4) then
+		if menuselect == 2 then
+			game=true
+			menu=false
+		end
+	end
+end
+
+function updategame()
+	map()
 end
 -->8
 -- draw game
@@ -52,6 +62,10 @@ function drawmenu()
 	cls()
 	print("⬅️          ➡️")
 	print(menuoptions[menuchoice],10,0)
+end
+
+function drawgame()
+	cls(4)
 end
 -->8
 -- to do list
