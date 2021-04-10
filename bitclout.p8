@@ -6,6 +6,7 @@ __lua__
 
 function _init()
 	menu = true
+	menuchoice = 1
 end
 
 	
@@ -29,10 +30,10 @@ function updatemenu()
 	menuoptions = {"choose","play","continue"}
 	if btnp(0) then
 		menuchoice = 2
-	end	
-	if btnp(1) then
+	elseif btnp(1) then
 		menuchoice = 3
 	end
+	return menuchoice
 end
 -->8
 -- draw game
@@ -43,14 +44,21 @@ function _draw()
 	elseif game then
 		drawgame()
 	elseif gameover then
-		updategameover()
+		drawgameover()
 	end
 end
 
 function drawmenu()
 	cls()
-	print("⬅️ "..menuoptions[menuchoice].."➡️")
+	print("⬅️          ➡️")
+	print(menuoptions[menuchoice],10,0)
 end
+-->8
+-- to do list
+
+-- 1. add in menu
+-- 2. add in gameplay
+-- 3. highscore
 __gfx__
 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
