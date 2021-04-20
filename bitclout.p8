@@ -32,7 +32,7 @@ function make_player()
 	p.x = 1
 	p.y = 1
 	p.bits = 0
-	p.clout = 9
+	p.clout = 0
 	p.sprite = 9
 end
 
