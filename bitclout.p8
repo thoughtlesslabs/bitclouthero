@@ -9,6 +9,9 @@ function _init()
 	map_setup()
 	make_player()
 	
+	gameover = false
+	gamewin=false
+	
 	logo_y = -30
 	logo_dy = 42
 end
@@ -16,7 +19,7 @@ end
 function map_setup()
 	-- animation timers
 	timer = 0
-	anim_time = 60
+	anim_time = 60+rnd(10)
 	
 	-- map tile settings
 	wall = {18,7,6,34,35}
@@ -36,7 +39,7 @@ function make_player()
 	p.x = 1
 	p.y = 1
 	p.bits = 0
-	p.clout = 0
+	p.clout = 10
 	p.sprite = 9
 end
 
@@ -99,9 +102,14 @@ function display()
 end
 
 function check_win()
-	if p.clout >= 10 then
-	 game = false
-	 gameover = true
+	if is_tile(win,p.x,p.y) and p.clout >= 10 then
+	 gamewin = true
+	 gameover=true
+		game = false
+	elseif is_tile(lose,p.x,p.y) then
+		gamewin = false
+		gameover=true
+		game = false
 	end
 end
 
@@ -148,8 +156,11 @@ function updatemenu()
 end
 
 function updategame()
-	move_player()
-	update_map()
+	if not gameover then
+				check_win()
+		move_player()
+		update_map()
+	end
 end
 
 function updategameover()
@@ -179,11 +190,9 @@ end
 
 
 function interact(x,y)
-	if is_tile(win,x,y) then
-		check_win()
-	elseif is_tile(clout,x,y) then
+if is_tile(clout,x,y) then
 		get_clout(x,y)
-	elseif is_tile(traps,x,y) then
+	elseif is_tile(traps,x,y) and gameover==false then
 		trapped(x,y)
 	end
 end
@@ -229,7 +238,12 @@ function drawgameover()
 	textx = mapx*8+40
 	texty = mapy*8+10
 	
-	rectfill(textx,textx,textx+50,textx+20,0)
+	rectfill(textx,texty,textx+50,texty+20,0)
+	if gamewin then
+		print('congratulations',textx+5,texty+5)
+	else
+		print('sorry. you lose',textx+5,texty+5)
+	end
 end
 
 function draw_map()
