@@ -11,7 +11,6 @@ function _init()
 	
 	logo_y = -30
 	logo_dy = 42
-	wait = 3
 end
 
 function map_setup()
@@ -138,17 +137,14 @@ function _update60()
 end
 
 function updatemenu()
-
 	if not logoanimation() then
-		logoanimation()
-		wait -=1
-	
-		if wait <= 0 and btnp(5) then
+		if btnp(5) then
 			menu = false
 			game=true
 			wait = 0
 		end
 	end
+	logoanimation()
 end
 
 function updategame()
