@@ -1,0 +1,2 @@
+# Ignore PNG.P8 files from tracking
+*.p8.png
