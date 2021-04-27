@@ -181,13 +181,13 @@ function move_player()
 	if btnp(3) then newy += 1 end
 	
 	interact(newx,newy)
-	
-	if can_move(newx,newy) then
-
-		p.x = mid(0,newx,127)
-		p.y = mid(0,newy,63)
-	else
-		sfx(0)
+	if newx < 64 and newy < 32 then
+		if can_move(newx,newy) then
+			p.x = mid(0,newx,127)
+			p.y = mid(0,newy,63)
+		else
+			sfx(0)
+		end
 	end
 end
 
