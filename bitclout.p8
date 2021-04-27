@@ -102,7 +102,7 @@ function display()
 	disy = mapy*8
 	
 	rectfill(disx,disy,disx+128,disy+6,0)
-	print("clout: "..p.clout,disx+3,disy,3)
+	print("clout: "..p.clout,disx+3,disy,7)
 end
 
 function check_win()
@@ -183,13 +183,11 @@ function move_player()
 	if btnp(3) then newy += 1 end
 	
 	interact(newx,newy)
-	if newx < 64 and newy < 32 then
-		if can_move(newx,newy) then
-			p.x = mid(0,newx,127)
-			p.y = mid(0,newy,63)
+	if can_move(newx,newy) then
+			p.x = mid(0,newx,63)
+			p.y = mid(0,newy,31)
 		else
 			sfx(0)
-		end
 	end
 end
 
@@ -260,7 +258,7 @@ function draw_map()
  mapy = flr(p.y/16)*16
  
  camera(mapx*8,mapy*8)
-	map(0,0,0,0,128,64)
+	map(0,0,0,0,64,32)
 end
 
 function draw_player()
